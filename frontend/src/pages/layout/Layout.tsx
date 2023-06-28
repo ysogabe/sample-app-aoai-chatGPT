@@ -1,35 +1,35 @@
 import { Outlet, Link } from "react-router-dom";
 import styles from "./Layout.module.css";
-import Azure from "../../assets/Azure.svg";
-import { CopyRegular, ShareRegular } from "@fluentui/react-icons";
+import Logo from "../../assets/logo_persol.svg";
+// import { CopyRegular, ShareRegular } from "@fluentui/react-icons";
 import { Dialog, Stack, TextField } from "@fluentui/react";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const Layout = () => {
-    const [isSharePanelOpen, setIsSharePanelOpen] = useState<boolean>(false);
-    const [copyClicked, setCopyClicked] = useState<boolean>(false);
-    const [copyText, setCopyText] = useState<string>("Copy URL");
+    // const [isSharePanelOpen, setIsSharePanelOpen] = useState<boolean>(false);
+    // const [copyClicked, setCopyClicked] = useState<boolean>(false);
+    // const [copyText, setCopyText] = useState<string>("Copy URL");
 
-    const handleShareClick = () => {
-        setIsSharePanelOpen(true);
-    };
+    // const handleShareClick = () => {
+    //     setIsSharePanelOpen(true);
+    // };
 
-    const handleSharePanelDismiss = () => {
-        setIsSharePanelOpen(false);
-        setCopyClicked(false);
-        setCopyText("Copy URL");
-    };
+    // const handleSharePanelDismiss = () => {
+    //     setIsSharePanelOpen(false);
+    //     setCopyClicked(false);
+    //     setCopyText("Copy URL");
+    // };
 
-    const handleCopyClick = () => {
-        navigator.clipboard.writeText(window.location.href);
-        setCopyClicked(true);
-    };
+    // const handleCopyClick = () => {
+    //     navigator.clipboard.writeText(window.location.href);
+    //     setCopyClicked(true);
+    // };
 
-    useEffect(() => {
-        if (copyClicked) {
-            setCopyText("Copied URL");
-        }
-    }, [copyClicked]);
+    // useEffect(() => {
+    //     if (copyClicked) {
+    //         setCopyText("Copied URL");
+    //     }
+    // }, [copyClicked]);
 
     return (
         <div className={styles.layout}>
@@ -37,24 +37,24 @@ const Layout = () => {
                 <div className={styles.headerContainer}>
                     <Stack horizontal verticalAlign="center">
                         <img
-                            src={Azure}
+                            src={Logo}
                             className={styles.headerIcon}
                             aria-hidden="true"
                         />
                         <Link to="/" className={styles.headerTitleContainer}>
-                            <h1 className={styles.headerTitle}>Azure AI</h1>
+                            <h1 className={styles.headerTitle}>Persol-PT Chat【デモ】</h1>
                         </Link>
-                        <div className={styles.shareButtonContainer} role="button" tabIndex={0} aria-label="Share" onClick={handleShareClick} onKeyDown={e => e.key === "Enter" || e.key === " " ? handleShareClick() : null}>
+                        {/* <div className={styles.shareButtonContainer} role="button" tabIndex={0} aria-label="Share" onClick={handleShareClick} onKeyDown={e => e.key === "Enter" || e.key === " " ? handleShareClick() : null}>
                             <ShareRegular className={styles.shareButton} />
                             <span className={styles.shareButtonText}>Share</span>
-                        </div>
+                        </div> */}
                     </Stack>
                 </div>
             </header>
             <Outlet />
             <Dialog 
-                onDismiss={handleSharePanelDismiss}
-                hidden={!isSharePanelOpen}
+                // onDismiss={handleSharePanelDismiss}
+                // hidden={!isSharePanelOpen}
                 styles={{
                     
                     main: [{
@@ -75,7 +75,7 @@ const Layout = () => {
                     showCloseButton: true
                 }}
             >
-                <Stack horizontal verticalAlign="center" style={{gap: "8px"}}>
+                {/* <Stack horizontal verticalAlign="center" style={{gap: "8px"}}>
                     <TextField className={styles.urlTextBox} defaultValue={window.location.href} readOnly/>
                     <div 
                         className={styles.copyButtonContainer} 
@@ -88,7 +88,7 @@ const Layout = () => {
                         <CopyRegular className={styles.copyButton} />
                         <span className={styles.copyButtonText}>{copyText}</span>
                     </div>
-                </Stack>
+                </Stack> */}
             </Dialog>
         </div>
     );
